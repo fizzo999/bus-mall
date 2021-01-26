@@ -1,14 +1,99 @@
+* {
+  padding: 0;
+  margin: 0;
+}
 
 body {
-  width: 960px;
-  display: block;
-  margin: 120px auto;
+  background-color: rgb(221, 216, 241);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  background-color: rgb(88, 79, 122);
+  padding: 1.0rem 0;
+  border-bottom: rgb(42, 45, 90) solid 12px;
+  color: rgb(206, 205, 212);
+}
+
+h2, h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(206, 205, 212);
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: rgb(88, 79, 122);
+  margin-top: 0;
+  border-bottom: rgb(42, 45, 90) solid 12px;
+  z-index: 5;
+}
+
+nav ol {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+nav ol li {
+  font-size: 1.5rem;
+  border: 1px solid black;
+  padding: 15px 50px;
+  margin: 10px 10px;
+  border-radius: 10px;
+  background: rgb(77, 75, 92);
+  color: white;
+  font-weight: 900;
+}
+
+nav ol li:hover {
+  background: rgb(194, 189, 230);
+  /* color: #000; */
+  font-size: 1.5rem;
+  padding: 15px 50px;
+  margin: 10px 10px;
+}
+
+a:hover {
+  color: #fff;
 }
 
 
 
+.clear {
+  height: 200px;
+  width: 100%;
+}
+
+main {
+  width: 960px;
+  margin: 0 auto;
+  /* border: 1px solid black; */
+  height: 2000px;
+}
+
+
 .imageContainer {
-  /* top: 300px; */
+  top: 300px;
+  height: 500px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,11 +106,63 @@ body {
   width: 32%;
 }
 
-#productImagesContainer img:nth-child(2) {
-  /* border: 1px grey solid; */
-  /* background-color: rgb(182, 179, 179); */
-  /* padding: 64px 24px; */
+.btn {
+  position: absolute;
+  top: 200px;
+  left: calc(50vw - 200px);
+  display: block;
+  display: none;
+  /* margin: 12px auto; */
+  padding: 24px 54px;
+  background-color: rgb(42, 45, 90);
+  color: aliceblue;
+  font-size: 24px;
+  border-radius: 12px;
+  border: 1px solid white;
+}
+
+.btn:hover {
+  background-color: aliceblue;
+  color:rgb(52, 47, 71);
+  border: 2px solid black;
+}
+
+.showResults h2 {
+  display: none;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 3rem;
+  text-align: center;
 
 }
 
+#resultsContainer {
+  position: absolute;
+  top: 300px;
+  width: 800px;
+  margin: 24px auto;
+
+}
+
+
+
+ul {
+  /* list-style-image: url('img/boots.jpg'); */
+}
+
+ul img {
+  width: 100px;
+  display: inline-block;
+}
+
+ul li {
+  margin: 12px 0;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  padding: 6px;
+  text-align: left;
+  /* display: inline-block; */
+
+}
 

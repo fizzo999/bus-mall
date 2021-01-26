@@ -37,6 +37,9 @@ var productContainer = document.getElementById('productImagesContainer');
 var leftImage = document.getElementById('leftImage');
 var middleImage = document.getElementById('middleImage');
 var rightImage = document.getElementById('rightImage');
+var resultsButton = document.getElementById('showResultsBtn');
+var resultsContainer = document.getElementById('resultsContainer')
+
 // generate random number between 1 and the length of the array that contains all objects (=allImages)
 
 function genRandProduct() {
@@ -114,25 +117,40 @@ function checkForResults() {
   }
   console.log('HAS BEEN CLICKED YAYAYAY', hasBeenClickedArray);
   printResults();
+
 }
+
+resultsButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  resultsContainer.style.display = 'block';
+
+
+
+})
+
+
+
+
+
+
+
 function printResults() {
+
+  resultsContainer.style.display = 'none';
+  resultsButton.style.display = 'block';
 
   var ulElement = document.getElementById('results');
 
   for (var l = 0; l < Product.allImages.length; l++) {
 
     var liElement = document.createElement('li');
+    var imgResults = document.createElement('img');
+    // liElement.textContent = 'I love you, Fizzo';
 
-    console.log("Hello ----- ", Product.allImages[l].imageName);
-
-    // liElement.textContent = `${Product.allImages[l].imageName} had ${Product.allImages[l].timesClicked} votes, and was viewed ${Product.allImages[l].timesShown} times`;
-
-    liElement.textContent = Product.allImages[l].imageName + ' had ' + Product.allImages[l].timesClicked + ' votes, and was viewed ' + Product.allImages[l].timesShown + ' times';
-
-
-    liElement.textContent = Product.allImages[l].imageName;
-
+    liElement.textContent = `${Product.allImages[l].imageName} had ${Product.allImages[l].timesClicked} votes, and was viewed ${Product.allImages[l].timesShown} times`;
     ulElement.appendChild(liElement);
+    imgResults.src = Product.allImages[l].imagePath;
+    ulElement.appendChild(imgResults);
 
   }
 }
