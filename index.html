@@ -6,19 +6,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
-  <title>Document</title>
+  <title>Bus Mall Product Survey</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 </head>
 
 <body>
+  <header>
+    <nav>
+      <h1>The Bus Mall Product Catalog Survey</h1>
+      <ol>
+        <li><a href="index.html">REstart</a></li>
+        <!-- <li><a href="#hero">About</a></li>
+        <li><a href="#invisibleToStores">Contact</a></li> -->
+        <!-- <li><a href="#showResults">Reveal Results</a></li>
+        <li class="randNum"><a href="#" onclick="randNumbers()">Random Number Game</a></li> -->
+      </ol>
+    </nav>
+  </header>
   <main>
+    <section>
+      <div class="clear"></div>
+      <h2 id="sectionHeader">Please select from the three images below</h2>
+
+    </section>
     <div id="productImagesContainer" class="imageContainer">
       <img id="leftImage" class="image">
       <img id="middleImage" class="image">
       <img id="rightImage" class="image">
     </div>
-    <ul class="results">
+    <button id="roundsCounter" class="btn btn3">How many Rounds Left HERE</button>
+    <div id="showResults" class="showResults">
+      <button id="showResultsBtn" class="btn btn1">Show Results of the Survey</button>
+      <button id="showChartBtn" class="btn btn2">Show Results as a Chart</button>
+    </div>
+    <section class="listcontainer">
+      <div id="resultsContainer">
+        <ul id="results">
 
-    </ul>
+        </ul>
+      </div>
+    </section>
+    <div id="chartDisplay1" class="chartDisplay1">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
   </main>
 
 
