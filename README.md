@@ -2,6 +2,10 @@
 lab11 Codefellows 201 create a digital product test to evaluate consumer preferences
 
 ## update 01/27/2021
+another great day !!! I implemented the local storage. After struggling with it for a bit here and there. I went back to the simple solution of changing the constructor function (4variables instead of 2), and setting 0, 0, infront of all 20 images.
+What I learned was running the JSON parsed string array back throught the constructor function required to be dataFromStorageAraay[i].timesClicked,..... for all 4 variables as parameters to feed into the function.
+I also made the check (dataFromStorageArray for empty) work (note as operator it needs == null - NOT =)
+I also made the reset button work (I added another event listener, so that when clicked - it would delete the data and start at 0) YAY.
 
 
 ## update 01/26/2021
