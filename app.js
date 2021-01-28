@@ -1,36 +1,74 @@
 'use strict';
 // create the product constructor
-function Product(imagePath, imageName) {
-  this.timesClicked = 0;
-  this.timesShown = 0;
+function Product(timesClicked, timesShown, imagePath, imageName) {
+  this.timesClicked = timesClicked;
+  this.timesShown = timesShown;
   this.imagePath = imagePath;
   this.imageName = imageName;
   // this.hasBeenClickedArray = [];
   Product.allImages.push(this);
 }
-Product.allImages = [];
+
+function storeObject(obj) {
+  var stringifiedArray = JSON.stringify(obj);
+  localStorage.setItem('products', stringifiedArray);
+}
+
+function fetchObject(key) {
+  var stringifiedArray = localStorage.getItem(key);
+  return JSON.parse(stringifiedArray);
+}
+var resetButton = document.getElementById('resetButton');
+resetButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  localStorage.removeItem('products');
+  window.location.reload(true);
+
+})
+
+
 var hasBeenClickedArray = [];
+Product.allImages = [];
+productsFromStorageArray = [];
+
+var productsFromStorageArray = fetchObject('products');
+console.log(typeof (productsFromStorageArray), productsFromStorageArray);
+if (productsFromStorageArray == null) {
+  createNew20ImageObjects();
+  console.log('now I m gonna create new objects', Product.allImages)
+} else {
+  for (var i = 0; i < productsFromStorageArray.length; i++) {
+    new Product(productsFromStorageArray[i].timesClicked, productsFromStorageArray[i].timesShown, productsFromStorageArray[i].imagePath, productsFromStorageArray[i].imageName);
+    // console.log(productsFromStorageArray[i]);
+  }
+  console.log(Product.allImages);
+}
+
+
 // create all 20 image objects
-new Product('img/bag.jpg', 'bag');
-new Product('img/banana.jpg', 'banana');
-new Product('img/bathroom.jpg', 'bathroom');
-new Product('img/boots.jpg', 'boots');
-new Product('img/breakfast.jpg', 'breakfast');
-new Product('img/bubblegum.jpg', 'bubblegum');
-new Product('img/chair.jpg', 'chair');
-new Product('img/cthulhu.jpg', 'cthulhu');
-new Product('img/dog-duck.jpg', 'dog-duck');
-new Product('img/dragon.jpg', 'dragon');
-new Product('img/pen.jpg', 'pen');
-new Product('img/pet-sweep.jpg', 'pet-sweep');
-new Product('img/scissors.jpg', 'scissors');
-new Product('img/shark.jpg', 'shark');
-new Product('img/sweep.png', 'sweep');
-new Product('img/tauntaun.jpg', 'tauntaun');
-new Product('img/unicorn.jpg', 'unicorn');
-new Product('img/usb.gif', 'usb');
-new Product('img/water-can.jpg', 'water-can');
-new Product('img/wine-glass.jpg', 'wine-glass');
+function createNew20ImageObjects() {
+  new Product(0, 0, 'img/bag.jpg', 'bag');
+  new Product(0, 0, 'img/banana.jpg', 'banana');
+  new Product(0, 0, 'img/bathroom.jpg', 'bathroom');
+  new Product(0, 0, 'img/boots.jpg', 'boots');
+  new Product(0, 0, 'img/breakfast.jpg', 'breakfast');
+  new Product(0, 0, 'img/bubblegum.jpg', 'bubblegum');
+  new Product(0, 0, 'img/chair.jpg', 'chair');
+  new Product(0, 0, 'img/cthulhu.jpg', 'cthulhu');
+  new Product(0, 0, 'img/dog-duck.jpg', 'dog-duck');
+  new Product(0, 0, 'img/dragon.jpg', 'dragon');
+  new Product(0, 0, 'img/pen.jpg', 'pen');
+  new Product(0, 0, 'img/pet-sweep.jpg', 'pet-sweep');
+  new Product(0, 0, 'img/scissors.jpg', 'scissors');
+  new Product(0, 0, 'img/shark.jpg', 'shark');
+  new Product(0, 0, 'img/sweep.png', 'sweep');
+  new Product(0, 0, 'img/tauntaun.jpg', 'tauntaun');
+  new Product(0, 0, 'img/unicorn.jpg', 'unicorn');
+  new Product(0, 0, 'img/usb.gif', 'usb');
+  new Product(0, 0, 'img/water-can.jpg', 'water-can');
+  new Product(0, 0, 'img/wine-glass.jpg', 'wine-glass');
+}
+
 // console.log(Product.allImages);
 // grab the HTML elements and put them in 1 + 3 variables
 var productContainer = document.getElementById('productImagesContainer');
@@ -43,11 +81,13 @@ var resultsContainer = document.getElementById('resultsContainer');
 var chartDisplay1 = document.getElementById('chartDisplay1');
 var roundsCounterElement = document.getElementById('roundsCounter');
 var sectionHeader = document.getElementById('sectionHeader');
+
 var numberOfClicks = 0;
 var rounds = 4;
 var roundsInput = 0;
 var lastImageIndexNumArray = [];
 var tempImageIndexNumArray = [];
+var userName = 'Fizzo';
 
 // var roundsInput = 0;
 function askRounds() {
@@ -59,7 +99,7 @@ function askRounds() {
 
   // console.log(roundsInput);
   // roundsCounterElement.textContent = (roundsInput - 1) + ' rounds left';
-  return rounds, roundsInput;
+  return (rounds, roundsInput);
 }
 
 askRounds();
@@ -103,9 +143,13 @@ function genRanNum() {
 function renderProduct(leftProduct, middleProduct, rightProduct) {
 
   leftImage.src = leftProduct.imagePath;
+  console.log(leftProduct.imagePath);
   middleImage.src = middleProduct.imagePath;
   rightImage.src = rightProduct.imagePath;
   roundsCounterElement.textContent = (roundsInput) + ' rounds left';
+
+  // call function for 
+
 
 }
 
@@ -132,7 +176,12 @@ function handleImageClick(event) {
     middleImage.src = '';
     rightImage.src = '';
     productContainer.removeEventListener('click', handleImageClick);
-    // console.log('HAS IT STOPPED ALLOWING TO CLICK ????, ', event.target);
+
+    // remove old storage data set and store results in local storage
+    localStorage.removeItem('products');
+    storeObject(Product.allImages);
+    console.log('THIS IS WHERE THEY ARE ALL STORED', Product.allImages);
+
     return checkForResults();
   }
 }
@@ -188,7 +237,6 @@ function printResults() {
 // this grabs our canvas element and select a context called ('2d;);
 //    this operation enables us to draw 2 dimensional shapes use the chartContext variable
 var chartContext = document.getElementById('myChart').getContext('2d');
-
 var votesByProduct = [];
 var timesProductsAreShown = [];
 var productsNamesArray = [];
