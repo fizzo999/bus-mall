@@ -1,6 +1,10 @@
 # bus-mall
 lab11 Codefellows 201 create a digital product test to evaluate consumer preferences
 
+## update 01/28/2021
+morning study of CSS transitions - I try it on the images the user can click. I notice the delay of the transition hangs up the image reload and I decide to take it off again. Instead I apply a gentle background-color transition to all the buttons - on the hover state and that works and looks nice.
+
+
 ## update 01/27/2021
 another great day !!! I implemented the local storage. After struggling with it for a bit here and there. I went back to the simple solution of changing the constructor function (4variables instead of 2), and setting 0, 0, infront of all 20 images.
 What I learned was running the JSON parsed string array back throught the constructor function required to be dataFromStorageAraay[i].timesClicked,..... for all 4 variables as parameters to feed into the function.

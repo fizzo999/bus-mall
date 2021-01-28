@@ -67,13 +67,16 @@ nav ol li {
   padding: 15px 50px;
   margin: 10px 10px;
   border-radius: 10px;
-  background: rgb(77, 75, 92);
+  background-color: rgb(77, 75, 92);
   color: white;
   font-weight: 900;
+  transition-property: background-color;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
 }
 
 nav ol li:hover {
-  background: rgb(194, 189, 230);
+  background-color: rgb(194, 189, 230);
   /* color: #000; */
   font-size: 1.5rem;
   padding: 15px 50px;
@@ -113,6 +116,19 @@ main {
   margin: 12px;
   border-radius: 12px;
   width: 32%;
+  /* transition-property: width;
+  transition-duration: 300ms;
+  transition-timing-function: linear; */
+  border: 5px solid rgb(42, 45, 90, 0);
+  /* transition-property: border;
+  transition-duration: 200ms;
+  transition-timing-function: linear; */
+}
+
+.image:hover {
+  /* width: 27%; */
+  display: hidden;
+  border: 5px solid rgb(42, 45, 90, 1);
 }
 
 .btn {
@@ -125,12 +141,6 @@ main {
   border: 1px solid white;
 }
 
-.btn1:hover,
-.btn2:hover {
-  background-color: aliceblue;
-  color:rgb(52, 47, 71);
-  border: 2px solid black;
-}
 
 .btn1 {
   position: absolute;
@@ -138,6 +148,9 @@ main {
   left: calc(50vw - 202px);
   display: block;
   display: none;
+  transition-property: background-color;
+  transition-duration: 300ms;
+  transition-timing-function: linear;
 }
 
 .btn2 {
@@ -146,6 +159,16 @@ main {
   left: calc(50vw - 187px);
   display: block;
   display: none;
+  transition-property: background-color;
+  transition-duration: 300ms;
+  transition-timing-function: linear;
+}
+
+.btn1:hover,
+.btn2:hover {
+  background-color: aliceblue;
+  color:rgb(52, 47, 71);
+  border: 2px solid black;
 }
 
 .btn3 {
@@ -209,3 +232,4 @@ ul li {
   top: 600px;
   left: calc(50vw - 318px);
 } */
+
