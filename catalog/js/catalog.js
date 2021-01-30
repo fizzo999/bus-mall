@@ -100,9 +100,11 @@ cartContentsElement.appendChild(submitButton);
 
 
 submitButton.addEventListener('click', function (event) {
-  ulElement.style.display = 'none';
-  catalogForm.display = 'none';
-  submitButton.textContent = '';
+  removeFormAfterButtonClick();
+  // ulElement.style.display = 'none';
+  // catalogForm.removeEventListener('submit', handleSubmit);
+  // catalogForm.display = 'none';
+  // submitButton.textContent = '';
   var divElement = document.createElement('div');
   divElement.id = 'cartSubmitButtonDiv';
   cartContentsElement.appendChild(divElement);
@@ -114,9 +116,22 @@ submitButton.addEventListener('click', function (event) {
   aElement.id = 'cartSubmitButton';
   aElement.textContent = 'Click here to view your shopping Cart';
   spanElement.textContent = 'Your order has been submitted!';
-
-
 });
+
+
+function removeFormAfterButtonClick() {
+  ulElement.style.display = 'none';
+  catalogForm.removeEventListener('submit', handleSubmit);
+  catalogForm.style.display = 'none';
+  submitButton.textContent = '';
+  submitButton.style.pointerEvents = "none";
+  catalogForm.textContent = '';
+  return;
+}
+
+
+
+
 // Before anything else of value can happen, we need to fill in the select
 // drop down list in the form.
 populateForm();

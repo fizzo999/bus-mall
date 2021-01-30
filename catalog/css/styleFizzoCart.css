@@ -133,20 +133,32 @@ section.col-1:nth-child(2) {
 
 }
 
+#cart-container {
+  display: block;
+  margin: 0 auto;
+}
+
 #tableBody {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 200px;
+  color: rgb(42, 45, 90);
+  /* border: 8px solid rgb(42, 45, 90); */
   /* margin: 0 auto; */
+}
+thead {
+  border: 8px solid rgb(42, 45, 90);;
+
 }
 
 th {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding: 24px 36px;
-  min-width: 300px;
+  width: 300px;
   color: rgb(42, 45, 90);
   border: 8px solid rgb(42, 45, 90);;
+  
 }
 
 #tableBody tr {
@@ -157,8 +169,11 @@ th {
 }
 #tableBody td {
   display: inline-block;
-  margin: 24px;
+  width: calc(30%);
+  margin: 12px ;
   font-weight: 600;
+  color: white;
+  text-align: center;
 }
 
 #tableBody  button {
@@ -174,6 +189,8 @@ th {
   margin: 12px;
   margin-left: 24px;
 }
+
+
 
 footer {
   font-size: 36px;

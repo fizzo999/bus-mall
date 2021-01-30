@@ -274,6 +274,17 @@ fieldset input:nth-child(2) {
   border: 2px solid blue;
 }
 
+#cartSubmitButtonDiv span {
+  color: yellow;
+  font-size: 3rem;
+  margin-left: 72px;
+  line-height: 130%;
+
+
+
+}
+
+
 #cartSubmitButton {
   background-color: rgb(88, 79, 122);
   border: 1px solid white;

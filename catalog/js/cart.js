@@ -37,16 +37,18 @@ function showCart() {
     var tableRow = document.createElement('tr');
     var td2 = document.createElement('td');
     var td3 = document.createElement('td');
+    var td4 = document.createElement('td');
     removeButton = document.createElement('button');
     removeButton.name = cart.items[i].product;
     removeButton.textContent = "x";
     tableBodyElement.appendChild(tableRow);
-    tableRow.appendChild(removeButton);
+    td2.appendChild(removeButton);
     tableRow.appendChild(td2);
     tableRow.appendChild(td3);
+    tableRow.appendChild(td4);
 
-    td2.textContent = cart.items[i].quantity;
-    td3.textContent = cart.items[i].product;
+    td3.textContent = cart.items[i].quantity;
+    td4.textContent = cart.items[i].product;
 
 
   }
