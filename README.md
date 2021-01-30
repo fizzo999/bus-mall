@@ -1,5 +1,35 @@
 # bus-mall
-lab11 Codefellows 201 create a digital product test to evaluate consumer preferences
+lab11 Codefellows 201 create a digital product test to evaluate consumer preferences.
++ 3 pictures are randomly displayed (out of 20 stored pictures but that could be increased to any number of pictures);
++ as a user you get to chose one of the three over and over - you get to set how many rounds you would like to play (1 to 25);
+when the rounds of voting of your choice one out of three is done - you get to see the results of what you clicked on the most in a graph chart - or in text form with a picture to remind you of what the product looks like;
++ then you can click the nav button of going to the catalog;
++ there you can add products to my first shopping cart - very crudely but proof of concept;
++ when you are done selecting - you can submitt them to a shopping cart; with a success message and the input form disappearing; also the submit button goes offline;
++ it leads you over to the cart page - where you can selectively delete items;
+
+### projects/ things to come
++ make the input form on the cart page;
++ create a CSS animation for yay you submitted your order (maybe let one random image from the cart fly across the screen);
++ add images both to the catalog as well as the cart;
++ add price to the whole thing (catalog, cart);
++ add the abilityh to de crease product amount inside the shopping cart;
++ add newsletter sign-up;
+
+
+# overview comment
+https://fizzo999.github.io/bus-mall/
+I am proud of this one. I merged all the work I had done with Matt Simms on the shopping cart, all the work I had done on my own on the catalog and cart page. All the one site - BusMall YAY.
+Please come and check it out:
++ you can set the counter how many rounds you want to play;
++ you can continue to play without resetting the counter OR you can reset the counter and start over;
++ you can display the results after every round - either as a chart OR as a picture with the text results underneath;
++ you can switch to the catalog page and order products;
++ I have a smooth hover transition on all the buttons;
++ the data of the survey goes into local storage to survive the page refresh; and you can manually flush it out by clicking on the reset button;
++ the data in the catalog/shopping cart goes into storage and you can selectively delete items from the cart;
++ after submitting your order the input order form disappears;
+https://github.com/fizzo999/bus-mall
 
 ## update 01/30/2021
 I finished the styling of the catalog and shopping cart. Lots of times using the inspector to see which elements to find and grab onto. Had to change some lines of JS code. The elements were not correctly appended (in the shopping cart I nedded to add a td element and put the image of the x button into that td element). Also had to change the shopping cart flow to make the input form disappear after clicking the submit button. Also changed styling on that. Finally I wrapped the event listener for the submit button into a seperate function and called it off after clicking so the button is no longer active.
@@ -11,7 +41,7 @@ projects to come back to:
 + create a CSS animation for yay you submitted your order (maybe let one random image from the cart fly across the screen);
 + add images both to the catalog as well as the cart;
 + add price to the whole thing (catalog, cart);
-+ add the abilityh to de crease product amount inside the shopping cart;
++ add the ability to de crease product amount inside the shopping cart;
 + add newsletter sign-up;
 
 
