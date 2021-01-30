@@ -112,7 +112,7 @@ submitButton.addEventListener('click', function (event) {
   divElement.appendChild(spanElement);
   var aElement = document.createElement('a');
   divElement.appendChild(aElement);
-  aElement.href = 'cart.html';
+  aElement.href = 'catalogCart.html';
   aElement.id = 'cartSubmitButton';
   aElement.textContent = 'Click here to view your shopping Cart';
   spanElement.textContent = 'Your order has been submitted!';
