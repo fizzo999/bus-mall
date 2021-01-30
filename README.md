@@ -1,6 +1,29 @@
 # bus-mall
 lab11 Codefellows 201 create a digital product test to evaluate consumer preferences
 
+## update 01/30/2021
+I finished the styling of the catalog and shopping cart. Lots of times using the inspector to see which elements to find and grab onto. Had to change some lines of JS code. The elements were not correctly appended (in the shopping cart I nedded to add a td element and put the image of the x button into that td element). Also had to change the shopping cart flow to make the input form disappear after clicking the submit button. Also changed styling on that. Finally I wrapped the event listener for the submit button into a seperate function and called it off after clicking so the button is no longer active.
+
+Still unclear how to make the pseudo class of button:hover disappear.
+
+projects to come back to:
++ make the input form on the cart page;
++ create a CSS animation for yay you submitted your order (maybe let one random image from the cart fly across the screen);
++ add images both to the catalog as well as the cart;
++ add price to the whole thing (catalog, cart);
++ add the abilityh to de crease product amount inside the shopping cart;
++ add newsletter sign-up;
+
+
+
+## update 01/29/2021
+I merged all my work I had done with Matt Simms (catalog and shopping cart) to my bus mall survey site. I worked more on the styling. Specifically catalog and shopping cart.
+
+
+## update 01/28/2021
+morning study of CSS transitions - I try it on the images the user can click. I notice the delay of the transition hangs up the image reload and I decide to take it off again. Instead I apply a gentle background-color transition to all the buttons - on the hover state and that works and looks nice.
+
+
 ## update 01/27/2021
 another great day !!! I implemented the local storage. After struggling with it for a bit here and there. I went back to the simple solution of changing the constructor function (4variables instead of 2), and setting 0, 0, infront of all 20 images.
 What I learned was running the JSON parsed string array back throught the constructor function required to be dataFromStorageAraay[i].timesClicked,..... for all 4 variables as parameters to feed into the function.
