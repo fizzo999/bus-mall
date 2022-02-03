@@ -5,7 +5,6 @@ function Product(timesClicked, timesShown, imagePath, imageName) {
   this.timesShown = timesShown;
   this.imagePath = imagePath;
   this.imageName = imageName;
-  // this.hasBeenClickedArray = [];
   Product.allImages.push(this);
 }
 
@@ -23,60 +22,94 @@ resetButton.addEventListener('click', function (event) {
   event.preventDefault();
   localStorage.removeItem('products');
   window.location.reload(true);
-
-})
-
+});
 
 var hasBeenClickedArray = [];
 Product.allImages = [];
-productsFromStorageArray = [];
+var productsFromStorageArray = [];
 
-var productsFromStorageArray = fetchObject('products');
-console.log(typeof (productsFromStorageArray), productsFromStorageArray);
-if (productsFromStorageArray == null) {
+productsFromStorageArray = fetchObject('products');
+// console.log(typeof (productsFromStorageArray), productsFromStorageArray);
+if (productsFromStorageArray === null) {
   createNew20ImageObjects();
-  console.log('now I m gonna create new objects', Product.allImages)
+  console.log(
+    'local storage is empty ===> new objects created',
+    Product.allImages
+  );
 } else {
   for (var i = 0; i < productsFromStorageArray.length; i++) {
-    new Product(productsFromStorageArray[i].timesClicked, productsFromStorageArray[i].timesShown, productsFromStorageArray[i].imagePath, productsFromStorageArray[i].imageName);
+    new Product(
+      productsFromStorageArray[i].timesClicked,
+      productsFromStorageArray[i].timesShown,
+      productsFromStorageArray[i].imagePath,
+      productsFromStorageArray[i].imageName
+    );
     // console.log(productsFromStorageArray[i]);
   }
-  console.log(Product.allImages);
+  console.log(
+    'local storage had data inside of it ===> objects recreated with constructor function',
+    Product.allImages
+  );
 }
-
 
 // create all 20 image objects
 function createNew20ImageObjects() {
-  new Product(0, 0, 'img/bag.jpg', 'bag');
-  new Product(0, 0, 'img/banana.jpg', 'banana');
-  new Product(0, 0, 'img/bathroom.jpg', 'bathroom');
-  new Product(0, 0, 'img/boots.jpg', 'boots');
-  new Product(0, 0, 'img/breakfast.jpg', 'breakfast');
-  new Product(0, 0, 'img/bubblegum.jpg', 'bubblegum');
-  new Product(0, 0, 'img/chair.jpg', 'chair');
-  new Product(0, 0, 'img/cthulhu.jpg', 'cthulhu');
-  new Product(0, 0, 'img/dog-duck.jpg', 'dog-duck');
-  new Product(0, 0, 'img/dragon.jpg', 'dragon');
-  new Product(0, 0, 'img/pen.jpg', 'pen');
-  new Product(0, 0, 'img/pet-sweep.jpg', 'pet-sweep');
-  new Product(0, 0, 'img/scissors.jpg', 'scissors');
-  new Product(0, 0, 'img/shark.jpg', 'shark');
+  var productsArray = [
+    'bag',
+    'banana',
+    'bathroom',
+    'boots',
+    'breakfast',
+    'bubblegum',
+    'chair',
+    'cthulhu',
+    'dog-duck',
+    'dragon',
+    'pen',
+    'pet-sweep',
+    'scissors',
+    'shark',
+    'tauntaun',
+    'unicorn',
+    'water-can',
+    'wine-glass',
+  ];
+  //this is the old way of tediously calling the constructor and typing it out - I refactored this into a small array with just the product names in it and I use a template literal to create the imagePath for 18 of the product images that are all ending in .jpg - the 2 remaining products that end in .gif and .png I create seperately;
+  // new Product(0, 0, 'img/bag.jpg', 'bag');
+  // new Product(0, 0, 'img/banana.jpg', 'banana');
+  // new Product(0, 0, 'img/bathroom.jpg', 'bathroom');
+  // new Product(0, 0, 'img/boots.jpg', 'boots');
+  // new Product(0, 0, 'img/breakfast.jpg', 'breakfast');
+  // new Product(0, 0, 'img/bubblegum.jpg', 'bubblegum');
+  // new Product(0, 0, 'img/chair.jpg', 'chair');
+  // new Product(0, 0, 'img/cthulhu.jpg', 'cthulhu');
+  // new Product(0, 0, 'img/dog-duck.jpg', 'dog-duck');
+  // new Product(0, 0, 'img/dragon.jpg', 'dragon');
+  // new Product(0, 0, 'img/pen.jpg', 'pen');
+  // new Product(0, 0, 'img/pet-sweep.jpg', 'pet-sweep');
+  // new Product(0, 0, 'img/scissors.jpg', 'scissors');
+  // new Product(0, 0, 'img/shark.jpg', 'shark');
+  // new Product(0, 0, 'img/sweep.png', 'sweep'); =======================
+  // new Product(0, 0, 'img/tauntaun.jpg', 'tauntaun');
+  // new Product(0, 0, 'img/unicorn.jpg', 'unicorn');
+  // new Product(0, 0, 'img/usb.gif', 'usb'); ===================
+  // new Product(0, 0, 'img/water-can.jpg', 'water-can');
+  // new Product(0, 0, 'img/wine-glass.jpg', 'wine-glass');
+  productsArray.forEach(product => {
+    new Product(0, 0, `img/${product}.jpg`, product);
+  });
   new Product(0, 0, 'img/sweep.png', 'sweep');
-  new Product(0, 0, 'img/tauntaun.jpg', 'tauntaun');
-  new Product(0, 0, 'img/unicorn.jpg', 'unicorn');
   new Product(0, 0, 'img/usb.gif', 'usb');
-  new Product(0, 0, 'img/water-can.jpg', 'water-can');
-  new Product(0, 0, 'img/wine-glass.jpg', 'wine-glass');
 }
-
-// console.log(Product.allImages);
 // grab the HTML elements and put them in 1 + 3 variables
 var productContainer = document.getElementById('productImagesContainer');
 var leftImage = document.getElementById('leftImage');
 var middleImage = document.getElementById('middleImage');
 var rightImage = document.getElementById('rightImage');
+
 var resultsButton = document.getElementById('showResultsBtn');
 var chartButton = document.getElementById('showChartBtn');
+
 var resultsContainer = document.getElementById('resultsContainer');
 var chartDisplay1 = document.getElementById('chartDisplay1');
 var roundsCounterElement = document.getElementById('roundsCounter');
@@ -91,21 +124,22 @@ var userName = 'Fizzo';
 
 // var roundsInput = 0;
 function askRounds() {
-  roundsInput = prompt('Please select how many rounds of ProductSelection you would like to have displayed. Pick a number between 1 and 25');
-  while ((roundsInput < 1) || (roundsInput > 25)) {
+  roundsInput = prompt(
+    'Please select how many rounds of ProductSelection you would like to have displayed. Pick a number between 1 and 25'
+  );
+  while (+roundsInput < 1 || +roundsInput > 25) {
     roundsInput = prompt('Please only enter numbers from 1 to 25 !');
   }
-  rounds = roundsInput - 1;
+  rounds = +roundsInput - 1;
 
   // console.log(roundsInput);
   // roundsCounterElement.textContent = (roundsInput - 1) + ' rounds left';
-  return (rounds, roundsInput);
+  return rounds, roundsInput;
 }
 
 askRounds();
 
 function genRandImage() {
-
   tempImageIndexNumArray[0] = genRanNum();
   var leftProduct = Product.allImages[tempImageIndexNumArray[0]];
 
@@ -125,32 +159,30 @@ function genRandImage() {
   }
 
   return [leftProduct, middleProduct, rightProduct];
-
 }
 
 function genRanNum() {
-
   var randNumber = Math.floor(Math.random() * Product.allImages.length);
 
-  while (lastImageIndexNumArray.includes(randNumber) || tempImageIndexNumArray.includes(randNumber)) {
+  while (
+    lastImageIndexNumArray.includes(randNumber) ||
+    tempImageIndexNumArray.includes(randNumber)
+  ) {
     randNumber = Math.floor(Math.random() * Product.allImages.length);
   }
-  return (randNumber);
+  return randNumber;
 }
 
 // generate random number between 1 and the length of the array that contains all objects (=allImages)
 
 function renderProduct(leftProduct, middleProduct, rightProduct) {
-
   leftImage.src = leftProduct.imagePath;
   console.log(leftProduct.imagePath);
   middleImage.src = middleProduct.imagePath;
   rightImage.src = rightProduct.imagePath;
-  roundsCounterElement.textContent = (roundsInput) + ' rounds left';
+  roundsCounterElement.textContent = roundsInput + ' rounds left';
 
-  // call function for 
-
-
+  // call function for
 }
 
 var randProd = genRandImage();
@@ -203,13 +235,13 @@ resultsButton.addEventListener('click', function (event) {
   event.preventDefault();
   resultsContainer.style.display = 'block';
   chartDisplay1.style.display = 'none';
-})
+});
 
 chartButton.addEventListener('click', function (event) {
   event.preventDefault();
   resultsContainer.style.display = 'none';
   chartDisplay1.style.display = 'block';
-})
+});
 
 function printResults() {
   sectionHeader.style.display = 'none';
@@ -221,7 +253,6 @@ function printResults() {
   var ulElement = document.getElementById('results');
 
   for (var l = 0; l < Product.allImages.length; l++) {
-
     var imgResults = document.createElement('img');
     var liElement = document.createElement('li');
     // liElement.textContent = 'I love you, Fizzo';
@@ -255,31 +286,34 @@ function printChart() {
     type: 'bar',
     data: {
       labels: productsNamesArray, // array of strings goes here
-      datasets: [{
-        label: 'times clicked',
-        // data: [15, 50, 3, 5, 2, 3], // array of numbers goes here
-        data: votesByProduct,
-        backgroundColor: new Array(20).fill('rgba(54, 162, 235, 1)'),
-        borderColor: new Array(20).fill('rgba(54, 162, 235, 1)'),
-        borderWidth: 1
-      },
-      {
-        label: 'times displayed',
-        data: timesProductsAreShown,
-        backgroundColor: new Array(20).fill('rgba(255, 99, 132, 1)'),
-        borderColor: new Array(20).fill('rgba(255, 99, 132, 1)'),
-        borderWidth: 1
-      }]
+      datasets: [
+        {
+          label: 'times clicked',
+          // data: [15, 50, 3, 5, 2, 3], // array of numbers goes here
+          data: votesByProduct,
+          backgroundColor: new Array(20).fill('rgba(54, 162, 235, 1)'),
+          borderColor: new Array(20).fill('rgba(54, 162, 235, 1)'),
+          borderWidth: 1,
+        },
+        {
+          label: 'times displayed',
+          data: timesProductsAreShown,
+          backgroundColor: new Array(20).fill('rgba(255, 99, 132, 1)'),
+          borderColor: new Array(20).fill('rgba(255, 99, 132, 1)'),
+          borderWidth: 1,
+        },
+      ],
     },
     options: {
       scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
-    }
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+          },
+        ],
+      },
+    },
   });
-};
-
+}
